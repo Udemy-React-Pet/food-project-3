@@ -14,7 +14,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <React.Fragment>
-      <Router>
+      <Router basename='/food-project-3'>
         <Header />
         <main className='container content'>
           <Switch>
