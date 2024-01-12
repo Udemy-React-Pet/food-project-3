@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { getAllCategories } from '../api';
 
@@ -13,15 +13,15 @@ function Home() {
   const [filteredCatalog, setFilteredCatalog] = useState([]);
 
   const { pathname, search } = useLocation();
-  const { push } = useHistory();
-
+  const navigate = useNavigate();
+	
   const handleSearch = (str) => {
     setFilteredCatalog(
       catalog.filter((item) =>
         item.strCategory.toLowerCase().includes(str.toLowerCase())
       )
     );
-    push({
+    navigate({
       pathname,
       search: `?search=${str}`,
     });

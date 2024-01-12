@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,20 +15,18 @@ function App() {
   return (
     <React.Fragment>
       <Router basename='/food-project-3'>
-        <Header />
-        <main className='container content'>
-          <Switch>
-            <Route exact path='/'>
-							<Home />
-						</Route>
-            <Route path='/about' component={About} />
-            <Route path='/contacts' component={Contact} />
-            <Route path='/category/:name' component={Category} />
-						<Route path='/meal/:id' component={Recipe} />
-						<Route component={NotFound} />
-          </Switch>
-        </main>
-        <Footer />
+          <Header />
+          <main className='container content'>
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/contacts' element={<Contact />} />
+              <Route path='/category/:name' element={<Category />} />
+              <Route path='/meal/:id' element={<Recipe />} />
+              <Route element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
       </Router>
     </React.Fragment>
   );

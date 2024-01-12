@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { getFilteredCategory } from '../api';
 
@@ -8,7 +8,7 @@ import MealList from '../components/MealList';
 
 function Category() {
 	const { name } = useParams();
-	const { goBack } = useHistory();
+	const navigate = useNavigate();
 
 	const [meals, setMeals] = useState([]);
 
@@ -18,7 +18,7 @@ function Category() {
 
 	return (
 		<React.Fragment>
-			<button className='btn' onClick={goBack}>Go back</button>
+			<button className='btn green darken-1' onClick={() => navigate(-1)}>Go back</button>
 			{!meals.length ? <Preloader /> : <MealList meals={meals} />}
 		</React.Fragment>
 	);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { getMealById } from '../api';
 
@@ -7,7 +7,7 @@ import Preloader from '../components/Preloader';
 
 function Recipe() {
   const { id } = useParams();
-  const { goBack } = useHistory();
+  const navigate = useNavigate();
 
   const [recipe, setRecipe] = useState([]);
 
@@ -61,7 +61,7 @@ function Recipe() {
           ) : null}
         </div>
       )}
-      <button className='btn' onClick={goBack}>
+      <button className='btn green darken-1' onClick={() => navigate(-1)}>
         Go back
       </button>
     </React.Fragment>
